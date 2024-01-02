@@ -29,7 +29,7 @@ SurveyDataModel.init(
         primaryKey: true,
         allowNull: false
     },
-    order: {
+    received_order: {
         type: DataTypes.SMALLINT,
         allowNull: false
     },
@@ -53,7 +53,7 @@ SurveyDataModel.init(
     createdAt: false, 
     updatedAt: false,
     freezeTableName: true,
-    tableName: 'survey',
+    tableName: 'survey_data',
     sequelize: database,
     schema: databaseSchema
 });
