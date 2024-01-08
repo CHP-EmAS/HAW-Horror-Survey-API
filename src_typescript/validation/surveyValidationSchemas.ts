@@ -7,7 +7,7 @@ export const surveyDataSchema = Joi.object({
         .min(0).max(14)
         .required()
         .error(new Error(customError.missingArgument)),
-    order: 
+    received_order: 
         Joi.number()
         .min(0).max(14)
         .error(new Error(customError.invalidData))

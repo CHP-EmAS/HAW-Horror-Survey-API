@@ -7,7 +7,7 @@ export interface AddSurveyInterface {
 
 export interface SurveyDataInterface {
     game_id: number;
-    order: number;
+    received_order: number;
     scary_scale: number;
     assumed_name?: string;
 }

@@ -8,7 +8,7 @@ import { SurveyModel } from "./Survey";
 export class SurveyDataModel extends Model {
     public survey_id!: string;
     public game_id!: number;
-    public order!: number;
+    public received_order!: number;
     public scary_scale!: number;
     public assumed_name!: string;
     public was_assumed!: number;

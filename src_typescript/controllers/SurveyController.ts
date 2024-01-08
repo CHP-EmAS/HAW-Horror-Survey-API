@@ -37,7 +37,7 @@ class SurveyController {
                 
                 surveyData.survey_id = addedSurvey.id;
                 surveyData.game_id = data.game_id;
-                surveyData.order = data.order;
+                surveyData.received_order = data.received_order;
                 surveyData.scary_scale = data.scary_scale;
                 surveyData.assumed_name = data.assumed_name ?? ""
                 surveyData.was_assumed = 0;
