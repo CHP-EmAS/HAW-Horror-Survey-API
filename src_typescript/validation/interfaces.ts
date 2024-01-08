@@ -9,6 +9,5 @@ export interface SurveyDataInterface {
     game_id: number;
     order: number;
     scary_scale: number;
-    assumed_name: string;
-    was_assumed: number;
+    assumed_name?: string;
 }
