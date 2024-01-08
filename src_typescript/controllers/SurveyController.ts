@@ -25,8 +25,10 @@ class SurveyController {
             let survey = new SurveyModel();
 
             survey.id = uuidv4();
-            survey.horror_knowledge = survey.horror_knowledge;
-            survey.gaming_knowledge = survey.gaming_knowledge;
+            survey.horror_knowledge = requestParams.horror_knowledge;
+            survey.gaming_knowledge = requestParams.gaming_knowledge;
+
+            console.log()
 
             const addedSurvey: SurveyModel = await survey.save();
 
