@@ -22,13 +22,13 @@ class SurveyController {
             const { error } = addSurveySchema.validate(requestParams);
             if(error) return response.status(400).json(toObj(response,{Error: error.message}));
 
+            console.log("Creating new Survey: " + requestParams)
+
             let survey = new SurveyModel();
 
             survey.id = uuidv4();
             survey.horror_knowledge = requestParams.horror_knowledge;
             survey.gaming_knowledge = requestParams.gaming_knowledge;
-
-            console.log()
 
             const addedSurvey: SurveyModel = await survey.save();
 
