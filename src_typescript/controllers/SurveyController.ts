@@ -1,14 +1,13 @@
 import { Request, Response } from "express";
-import { Op } from "sequelize";
 
 import toObj from "../config/responseStandart"
-import * as customError from "../config/errorCodes"
 
 import { v4 as uuidv4 } from 'uuid';
 import { AddSurveyInterface } from "../validation/interfaces";
 import { addSurveySchema } from "../validation/surveyValidationSchemas";
 import { SurveyModel } from "../models/Survey";
 import { SurveyDataModel } from "../models/SurveyData";
+import { EmailModel } from "../models/Email";
 
 class SurveyController {
 
@@ -21,6 +20,11 @@ class SurveyController {
     
             const { error } = addSurveySchema.validate(requestParams);
             if(error) return response.status(400).json(toObj(response,{Error: error.message}));
+
+            const foundEmail: (EmailModel | null) = await EmailModel.findByPk(requestParams.email);
+            if(foundEmail != null) {
+                return response.status(418).json(toObj(response));
+            }
 
             console.log("Creating new Survey: " + JSON.stringify(requestParams))
 
@@ -45,7 +49,11 @@ class SurveyController {
                 await surveyData.save()
             };
 
-        
+            let newEmailEntry: any = new EmailModel()
+            newEmailEntry.email = requestParams.email;
+            newEmailEntry.lottery = requestParams.lottery;
+            newEmailEntry.save();
+
             return response.status(201).json(toObj(response));
 
         } catch ( error ) {
@@ -55,7 +63,7 @@ class SurveyController {
     }
 
     //Toggle Creation
-    public static toggleAddition(request: Request, response: Response) {
+    public static toggleCreation(request: Request, response: Response) {
         SurveyController.allowSurveyCreation = !SurveyController.allowSurveyCreation;
     }
 }

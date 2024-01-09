@@ -1,5 +1,7 @@
 //------- Survey Interfaces -------//
 export interface AddSurveyInterface {
+    email: string;
+    lottery: boolean;
     horror_knowledge: number;
     gaming_knowledge: number;
     survey_data: Array<SurveyDataInterface>;

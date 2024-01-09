@@ -25,11 +25,8 @@ GameModel.init(
         type: DataTypes.BOOLEAN,
         allowNull: false
     }
-},
-{
-    timestamps: true, 
-    createdAt: false, 
-    updatedAt: false,
+}, {
+    timestamps: false, 
     freezeTableName: true,
     tableName: 'game',
     sequelize: database,

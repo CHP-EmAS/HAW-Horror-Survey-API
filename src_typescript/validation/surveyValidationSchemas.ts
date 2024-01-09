@@ -26,18 +26,33 @@ export const surveyDataSchema = Joi.object({
 });
 
 export const addSurveySchema = Joi.object({
+    email:
+        Joi.string()
+        .required()
+        .email()
+        .error(new Error(customError.invalidEmail)),
+    lottery:
+        Joi.boolean()
+        .required()
+        .error(new Error(customError.missingArgument)),
     horror_knowledge:
         Joi.number()
+        .min(0).max(3)
+        .error(new Error(customError.invalidData))
         .required()
         .error(new Error(customError.missingArgument)),
     gaming_knowledge:
         Joi.number()
+        .min(0).max(3)
+        .error(new Error(customError.invalidData))
         .required()
         .error(new Error(customError.missingArgument)),
     survey_data:
         Joi.array()
         .items(surveyDataSchema)
         .required()
+        .error(new Error(customError.missingArgument))
         .length(15)
+        .error(new Error(customError.invalidData))
 });
 

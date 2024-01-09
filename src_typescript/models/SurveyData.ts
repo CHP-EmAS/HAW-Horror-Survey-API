@@ -47,11 +47,8 @@ SurveyDataModel.init(
         defaultValue: 0
     }
 
-},
-{
-    timestamps: true, 
-    createdAt: false, 
-    updatedAt: false,
+}, {
+    timestamps: false, 
     freezeTableName: true,
     tableName: 'survey_data',
     sequelize: database,

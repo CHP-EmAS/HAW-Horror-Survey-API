@@ -26,8 +26,7 @@ SurveyModel.init(
         type: DataTypes.SMALLINT,
         allowNull: false
     }
-},
-{
+}, {
     timestamps: true, 
     createdAt: "submitted_at",
     updatedAt: false,

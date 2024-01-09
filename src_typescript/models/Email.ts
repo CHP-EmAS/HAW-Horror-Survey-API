@@ -2,11 +2,10 @@ import { Model, DataTypes} from "sequelize";
 
 import { database, databaseSchema } from "../config/database";
 
-//------- Class for Game Model-------//
+//------- Class for Email Model-------//
 export class EmailModel extends Model {
-    public id!: number;
-    public name!: string;
-    public isHorror!: boolean;
+    public email!: string;
+    public lottery!: boolean;
 }
 
 //------- Init Sequelize-Model -------//
@@ -16,12 +15,15 @@ EmailModel.init(
         type: DataTypes.TEXT,
         primaryKey: true,
         allowNull: false
+    },
+    lottery: {
+        type: DataTypes.BOOLEAN,
+        primaryKey: false,
+        allowNull: false,
+        defaultValue: false
     }
-},
-{
-    timestamps: true, 
-    createdAt: false, 
-    updatedAt: false,
+}, {
+    timestamps: false,
     freezeTableName: true,
     tableName: 'email',
     sequelize: database,

@@ -3,6 +3,7 @@ export const shortName          = "short_name";
 export const missingArgument    = "missing_argument";
 export const invalidData        = "invalid_data";
 export const invalidRange       = "invalid_range";
+export const invalidEmail       = "invalid_email";
 
 //401 errors
 export const tokenRequired      = "token_required";
