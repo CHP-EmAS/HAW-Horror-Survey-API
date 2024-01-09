@@ -1,5 +1,6 @@
 import "reflect-metadata";
 
+import * as http from "http";
 import express, {Application} from "express";
 import helmet from "helmet"
 import * as bodyParser from "body-parser";
@@ -9,16 +10,21 @@ import ErrorHandler from "./middlewares/errorHandler"
 import CorsHandler from "./middlewares/corsHandler"
 import LogHandler from "./middlewares/logHandler"
 import {database} from "./config/database";
+import Web_Console from "./config/web_console";
+import { validateUserAccess } from "./config/web_console";
 
 class API {
+  private server: http.Server;
   private api: Application;
+  private webConsole: Web_Console;
 
   constructor() {
     this.api = express();
-    this.config();
+    this.server = http.createServer(this.api);
 
-    //Root
-    this.api.use("/", routes);
+    this.initAPI();
+
+    this.webConsole = new Web_Console(this.server, "/logging", validateUserAccess);
   }
 
   public async start(port: String) {
@@ -31,10 +37,11 @@ class API {
       throw Error("A connection to the database could not be established!");
     }
 
+    this.webConsole.start();
     this.api.listen(port, () => console.log(process.env.APP_NAME + " API started on Port: " + port + "!"));
   }
 
-  private config(): void {
+  private initAPI(): void {
 
     //cors
     this.api.use(CorsHandler.cors);
@@ -60,6 +67,7 @@ class API {
     this.api.use('/Build',        express.static('static/build'));
     this.api.use('/TemplateData', express.static('static/templates'));
 
+    this.api.use("/", routes);
   }
 }
 
