@@ -13,8 +13,8 @@ routes.use("/api", apiRoute);
 
 routes.use("/", staticRoute);
 
-routes.use("*", function(request: Request, response: Response) {
-    response.status(403).json(toObj(response));
-});
+//routes.use("*", function(request: Request, response: Response) {
+//    response.status(403).json(toObj(response));
+//});
 
 export default routes;
