@@ -15,6 +15,11 @@ class SurveyController {
 
     //POST Add Survey
     public static async addSurvey(request: Request, response: Response) {
+
+        if(!this.allowSurveyCreation) {
+            return response.status(403).json(toObj(response));
+        }
+
         try{
             const requestParams: AddSurveyInterface = request.body;
     
@@ -63,7 +68,7 @@ class SurveyController {
     }
 
     //Toggle Creation
-    public static toggleCreation(request: Request, response: Response) {
+    public static toggleSubmission() {
         SurveyController.allowSurveyCreation = !SurveyController.allowSurveyCreation;
     }
 }

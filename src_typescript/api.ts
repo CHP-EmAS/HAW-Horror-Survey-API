@@ -56,7 +56,10 @@ class API {
 
     //Static Files
     this.api.use("/favicon.ico", express.static("static/images/favicon.ico"));
-  
+    this.api.use("/web-console",  express.static("static/html/web_console.html"));
+    this.api.use('/Build',        express.static('static/build'));
+    this.api.use('/TemplateData', express.static('static/templates'));
+
   }
 }
 
