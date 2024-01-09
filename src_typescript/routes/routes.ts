@@ -19,7 +19,7 @@ routes.get("/", function(request: Request, response: Response) {
 });
 
 routes.use("*", function(request: Request, response: Response) {
-    response.status(403).json(toObj(response));
+    response.status(404).json(toObj(response));
 });
 
 export default routes;
