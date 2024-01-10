@@ -23,6 +23,7 @@
   },
   "homepage": "",
   "dependencies": {
+    "@types/socket.io": "^3.0.2",
     "body-parser": "^1.20.0",
     "dotenv": "^8.6.0",
     "express": "^4.18.1",

@@ -1,7 +1,5 @@
 import { Router, Request, Response } from "express";
 
-import {API_VERSION} from "../horror_survey_api_server";
-
 import toObj from "../config/responseStandart";
 
 import apiRoute from "./apiRoute";
@@ -13,8 +11,8 @@ routes.use("/api", apiRoute);
 
 routes.use("/", staticRoute);
 
-//routes.use("*", function(request: Request, response: Response) {
-//    response.status(403).json(toObj(response));
-//});
+routes.use("*", function(request: Request, response: Response) {
+    response.status(403).json(toObj(response));
+});
 
 export default routes;
