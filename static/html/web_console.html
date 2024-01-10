@@ -67,7 +67,6 @@
                 
                 socket = io.connect( "https://survey.xitem.de", {
                     path : "/logging",
-                    transports: ['websocket'],
                     withCredentials: true,
                     extraHeaders: {
                         "user-token": document.getElementById("user-token").value
