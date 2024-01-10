@@ -38,7 +38,7 @@ class API {
     }
 
     this.webConsole.start();
-    this.api.listen(port, () => console.log(process.env.APP_NAME + " API started on Port: " + port + "!"));
+    this.server.listen(port, () => console.log(process.env.APP_NAME + " API started on Port: " + port + "!"));
   }
 
   private initAPI(): void {
@@ -67,6 +67,7 @@ class API {
     this.api.use('/Build',        express.static('static/build'));
     this.api.use('/TemplateData', express.static('static/templates'));
 
+    //Root Route
     this.api.use("/", routes);
   }
 }
