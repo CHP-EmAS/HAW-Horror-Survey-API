@@ -16,7 +16,7 @@ class SurveyController {
     //POST Add Survey
     public static async addSurvey(request: Request, response: Response) {
 
-        if(!this.allowSurveyCreation) {
+        if(!SurveyController.allowSurveyCreation) {
             return response.status(403).json(toObj(response));
         }
 
@@ -70,6 +70,7 @@ class SurveyController {
     //Toggle Creation
     public static toggleSubmission() {
         SurveyController.allowSurveyCreation = !SurveyController.allowSurveyCreation;
+        console.log("Allow Survey Creation: " + SurveyController.allowSurveyCreation);
     }
 }
 
