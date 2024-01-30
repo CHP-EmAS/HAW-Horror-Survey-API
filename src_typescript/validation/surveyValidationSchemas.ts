@@ -34,7 +34,8 @@ export const surveyDataSchema = Joi.object({
 export const addSurveySchema = Joi.object({
     email:
         Joi.string()
-        .optional(),
+        .optional()
+        .allow('', null),
     horror_knowledge:
         Joi.number()
         .min(0).max(3)
