@@ -24,7 +24,10 @@ class SurveyController {
             const requestParams: AddSurveyInterface = request.body;
     
             const { error } = addSurveySchema.validate(requestParams);
-            if(error) return response.status(400).json(toObj(response,{Error: error.message}));
+            if(error) {
+                console.error("Error: " + error.message) 
+                return response.status(400).json(toObj(response,{Error: error.message}));
+            }
 
             console.log("Creating new Survey: " + JSON.stringify(requestParams))
 
