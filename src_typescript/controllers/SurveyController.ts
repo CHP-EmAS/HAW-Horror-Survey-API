@@ -20,15 +20,15 @@ class SurveyController {
             return response.status(403).json(toObj(response));
         }
 
-        try{
-            const requestParams: AddSurveyInterface = request.body;
+        const requestParams: AddSurveyInterface = request.body;
     
-            const { error } = addSurveySchema.validate(requestParams);
-            if(error) {
-                console.error("Error: " + error.message) 
-                return response.status(400).json(toObj(response,{Error: error.message}));
-            }
+        const { error } = addSurveySchema.validate(requestParams);
+        if(error) {
+            console.error("Error: " + error.message) 
+            return response.status(400).json(toObj(response,{Error: error.message}));
+        }
 
+        try{
             console.log("Creating new Survey: " + JSON.stringify(requestParams))
 
             let survey = new SurveyModel();
@@ -52,19 +52,22 @@ class SurveyController {
 
                 await surveyData.save()
             };
+        } catch ( error ) {
+            console.error(error);
+            response.status(500).json(toObj(response));
+        }
 
+        try{
             if(requestParams.email && requestParams.email.length > 0) {
                 let newEmailEntry: any = new EmailModel()
                 newEmailEntry.email = requestParams.email;
                 newEmailEntry.save();
             }
-            
-            return response.status(201).json(toObj(response));
-
         } catch ( error ) {
             console.error(error);
-            response.status(500).json(toObj(response));
-        }
+        } 
+
+        return response.status(201).json(toObj(response));
     }
 
     //Toggle Creation
