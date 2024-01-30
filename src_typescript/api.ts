@@ -65,6 +65,7 @@ class API {
     this.api.use("/favicon.ico",  express.static("static/images/favicon.ico"));
     this.api.use("/web-console",  express.static("static/html/web_console.html"));
     this.api.use('/css',          express.static('static/css'));
+    this.api.use('/img',          express.static('static/img'));
     this.api.use('/js',           express.static('static/js'));
     this.api.use('/Build',        express.static('static/build'));
     this.api.use('/TemplateData', express.static('static/templates'));
