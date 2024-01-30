@@ -10,6 +10,7 @@ export class SurveyDataModel extends Model {
     public game_id!: number;
     public received_order!: number;
     public scary_scale!: number;
+    public tension_scale!: number;
     public assumed_name!: string;
     public was_assumed!: number;
     public surveyObject!: SurveyModel;
@@ -34,6 +35,10 @@ SurveyDataModel.init(
         allowNull: false
     },
     scary_scale: {
+        type: DataTypes.SMALLINT,
+        allowNull: false
+    },
+    tension_scale: {
         type: DataTypes.SMALLINT,
         allowNull: false
     },

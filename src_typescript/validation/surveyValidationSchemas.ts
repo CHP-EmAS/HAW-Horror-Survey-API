@@ -19,6 +19,12 @@ export const surveyDataSchema = Joi.object({
         .error(new Error(customError.invalidData))
         .required()
         .error(new Error(customError.missingArgument)),
+    tension_scale:
+        Joi.number()
+        .min(0).max(3)
+        .error(new Error(customError.invalidData))
+        .required()
+        .error(new Error(customError.missingArgument)),
     assumed_name:
         Joi.string()
         .max(100)
@@ -28,13 +34,9 @@ export const surveyDataSchema = Joi.object({
 export const addSurveySchema = Joi.object({
     email:
         Joi.string()
-        .required()
+        .optional()
         .email()
         .error(new Error(customError.invalidEmail)),
-    lottery:
-        Joi.boolean()
-        .required()
-        .error(new Error(customError.missingArgument)),
     horror_knowledge:
         Joi.number()
         .min(0).max(3)

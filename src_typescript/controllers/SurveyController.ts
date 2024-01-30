@@ -26,11 +26,6 @@ class SurveyController {
             const { error } = addSurveySchema.validate(requestParams);
             if(error) return response.status(400).json(toObj(response,{Error: error.message}));
 
-            const foundEmail: (EmailModel | null) = await EmailModel.findByPk(requestParams.email);
-            if(foundEmail != null) {
-                return response.status(418).json(toObj(response));
-            }
-
             console.log("Creating new Survey: " + JSON.stringify(requestParams))
 
             let survey = new SurveyModel();
@@ -48,17 +43,19 @@ class SurveyController {
                 surveyData.game_id = data.game_id;
                 surveyData.received_order = data.received_order;
                 surveyData.scary_scale = data.scary_scale;
+                surveyData.tension_scale = data.tension_scale;
                 surveyData.assumed_name = data.assumed_name ?? ""
                 surveyData.was_assumed = 0;
 
                 await surveyData.save()
             };
 
-            let newEmailEntry: any = new EmailModel()
-            newEmailEntry.email = requestParams.email;
-            newEmailEntry.lottery = requestParams.lottery;
-            newEmailEntry.save();
-
+            if(requestParams.email) {
+                let newEmailEntry: any = new EmailModel()
+                newEmailEntry.email = requestParams.email;
+                newEmailEntry.save();
+            }
+            
             return response.status(201).json(toObj(response));
 
         } catch ( error ) {
