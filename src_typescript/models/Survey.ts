@@ -7,6 +7,7 @@ export class SurveyModel extends Model {
     public id!: string;
     public horror_knowledge!: number;
     public gaming_knowledge!: number;
+    public email_already_submitted!: boolean;
     public readonly submitted_at!: Date;
 }
 
@@ -24,6 +25,10 @@ SurveyModel.init(
     },
     gaming_knowledge: {
         type: DataTypes.SMALLINT,
+        allowNull: false
+    },
+    email_already_submitted: {
+        type: DataTypes.boolean,
         allowNull: false
     }
 }, {

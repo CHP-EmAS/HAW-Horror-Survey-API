@@ -28,6 +28,19 @@ class SurveyController {
             return response.status(400).json(toObj(response,{Error: error.message}));
         }
 
+        var email_already_submitted = false;
+        if(requestParams.email && requestParams.email.length > 0) {
+            const foundEmail: (EmailModel | null) = await EmailModel.findByPk(requestParams.email);
+            if(foundEmail != null) {
+                email_already_submitted = true;
+            } else {
+                let newEmailEntry: any = new EmailModel()
+                newEmailEntry.email = requestParams.email;
+                newEmailEntry.save();
+            }
+        }
+
+        
         try{
             console.log("Creating new Survey: " + JSON.stringify(requestParams))
 
@@ -36,6 +49,7 @@ class SurveyController {
             survey.id = uuidv4();
             survey.horror_knowledge = requestParams.horror_knowledge;
             survey.gaming_knowledge = requestParams.gaming_knowledge;
+            survey.email_already_submitted = email_already_submitted;
 
             const addedSurvey: SurveyModel = await survey.save();
 
@@ -58,11 +72,7 @@ class SurveyController {
         }
 
         try{
-            if(requestParams.email && requestParams.email.length > 0) {
-                let newEmailEntry: any = new EmailModel()
-                newEmailEntry.email = requestParams.email;
-                newEmailEntry.save();
-            }
+            
         } catch ( error ) {
             console.error(error);
         } 
