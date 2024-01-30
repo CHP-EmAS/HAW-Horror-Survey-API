@@ -28,7 +28,7 @@ SurveyModel.init(
         allowNull: false
     },
     email_already_submitted: {
-        type: DataTypes.boolean,
+        type: DataTypes.BOOLEAN,
         allowNull: false
     }
 }, {
