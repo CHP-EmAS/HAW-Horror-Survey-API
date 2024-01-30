@@ -233,7 +233,7 @@ p {
 .header-hero .shape.shape-2 {
  width:39px;
  height:39px;
- background:-webkit-linear-gradient(rgba(51,200,193,0.5) 0%,rgba(17,155,210) 100%);
+ background:-webkit-linear-gradient(rgba(41, 102, 99, 0.5) 0%,rgba(17,155,210) 100%);
  background:-o-linear-gradient(rgba(51,200,193,0.5) 0%,rgba(17,155,210) 100%);
  background:linear-gradient(rgba(51,200,193,0.5) 0%,rgba(17,155,210) 100%);
  left:150px;
@@ -251,7 +251,7 @@ p {
  background:-o-linear-gradient(rgba(54,28,193,0.5) 0%,rgba(46,130,239) 100%);
  background:linear-gradient(rgba(54,28,193,0.5) 0%,rgba(46,130,239) 100%);
  bottom:25%;
- left:26%;
+ left:75%;
  border-radius:50%;
  -webkit-animation:animation1 2s linear infinite;
  -moz-animation:animation1 2s linear infinite;
@@ -264,7 +264,7 @@ p {
  height:39px;
  border-radius:50%;
  top:175px;
- left:40%;
+ left:65%;
  -webkit-animation:animation1 2s linear infinite;
  -moz-animation:animation1 2s linear infinite;
  -o-animation:animation1 2s linear infinite;
@@ -280,7 +280,7 @@ p {
  -ms-transform:translateX(-50%);
  -o-transform:translateX(-50%);
  transform:translateX(-50%);
- bottom:20%;
+ bottom:27%;
  border-radius:50%;
  -webkit-animation:animation1 2s linear infinite;
  -moz-animation:animation1 2s linear infinite;
