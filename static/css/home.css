@@ -186,7 +186,6 @@ p {
 }
 .section-title .text {
  margin-top:20px;
- margin-bottom:50px;
 }
 .header-hero {
  position:relative;
@@ -355,7 +354,8 @@ p {
 }
 .header-hero-content .header-title {
  font-size:42px;
- color:#d4d4d4
+ color:#d4d4d4;
+ margin-bottom: 50px;
 }
 @media only screen and (min-width:992px) and (max-width:1199px) {
  .header-hero-content .header-title {
