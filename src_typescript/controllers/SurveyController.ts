@@ -53,7 +53,7 @@ class SurveyController {
                 await surveyData.save()
             };
 
-            if(requestParams.email) {
+            if(requestParams.email && requestParams.email.length > 0) {
                 let newEmailEntry: any = new EmailModel()
                 newEmailEntry.email = requestParams.email;
                 newEmailEntry.save();
